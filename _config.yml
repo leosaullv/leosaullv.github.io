@@ -1,8 +1,8 @@
 # Site settings
-title: "脱线道士维克多"
+title: "jianwei.lv"
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://wjp2013.github.io" # the base hostname & protocol for your site
-github_username: wjp2013
+url: "http://leosaullv.github.io" # the base hostname & protocol for your site
+github_username: leosaullv
 
 timezone: Beijing
 # Build settings
