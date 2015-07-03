@@ -39,9 +39,12 @@ end
 ```
 
 在这里，我们把验证逻辑都封装到了User模型中，避免了别的地方调用所带来的重复操作。更有利于逻辑的更改。
-    - 优点：把业务逻辑封装起来，当需要改动的时候，只改动业务逻辑即可
-    - 缺点：要调用这块逻辑，必须继承才可，对于ruby的单继承而言，很显然是不利的。
-  - 参数代理
+
+-优点：把业务逻辑封装起来，当需要改动的时候，只改动业务逻辑即可
+
+-缺点：要调用这块逻辑，必须继承才可，对于ruby的单继承而言，很显然是不利的。
+    
+- 参数代理
   
 ```
 class User
@@ -77,7 +80,9 @@ user.info(XmlFormatter.new)
 ```
 
 代理对象被传递给对象。对象将数据转化为所需要的格式。对象只关心需要改变格式的数据，至于改变成什么样的格式都是传递过来的代理对象所决定的。
+ 
  -优点：让对象拥有主动权，可以去选择代理
+ 
  -缺点:  只限于相同的接口，所有代理都必须实现这个接口
 
 - method_missing
@@ -105,7 +110,9 @@ User.new(Product.new).product_price
 ```
 
 我们可以使用Ruby的method_missing做到这一点，捕获没有明确定义的消息。
+
 -优点：易于扩展
+
 -缺点：参数传递较多，不宜控制
 
 - Forwardable
@@ -133,6 +140,9 @@ User.new(product).price
 关于	`forwardable`的用法可以参考[这里](http://brainspec.com/blog/2012/11/07/delegation-with-forwardable/)
 
 参考文章：
+
 [Delegation patterns in Ruby](http://radar.oreilly.com/2014/02/delegation-patterns-in-ruby.html)
+
 [Delegation on a method by method basis with Forwardable](http://brainspec.com/blog/2012/11/07/delegation-with-forwardable/)
+
 [Forwardable](http://ruby-doc.org/stdlib-2.0.0/libdoc/forwardable/rdoc/Forwardable.html)
