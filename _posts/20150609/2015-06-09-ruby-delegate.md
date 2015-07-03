@@ -15,7 +15,8 @@ author: "leosaullv"
 #####在ruby里实现代理模式通常有以下集中方式
 
 - 继承代理
-```ruby
+
+``` 
 class User
   def phone
     #return the phone number of user
@@ -28,6 +29,7 @@ class User
   end
 end
 ```
+
 ```
 class InputUserEmail < User
   def auth?
@@ -35,11 +37,13 @@ class InputUserEmail < User
   end
 end
 ```
+
 在这里，我们把验证逻辑都封装到了User模型中，避免了别的地方调用所带来的重复操作。更有利于逻辑的更改。
     - 优点：把业务逻辑封装起来，当需要改动的时候，只改动业务逻辑即可
     - 缺点：要调用这块逻辑，必须继承才可，对于ruby的单继承而言，很显然是不利的。
   - 参数代理
-```ruby
+  
+```
 class User
   def email
     #return the email of user
@@ -71,11 +75,13 @@ user.info(CsvFormatter.new)
 user.info(JsonFormatter.new)
 user.info(XmlFormatter.new)
 ```
+
 代理对象被传递给对象。对象将数据转化为所需要的格式。对象只关心需要改变格式的数据，至于改变成什么样的格式都是传递过来的代理对象所决定的。
  -优点：让对象拥有主动权，可以去选择代理
  -缺点:  只限于相同的接口，所有代理都必须实现这个接口
 
 - method_missing
+
 ```
 class User
   attr_reader :product
@@ -97,11 +103,13 @@ end
 
 User.new(Product.new).product_price
 ```
+
 我们可以使用Ruby的method_missing做到这一点，捕获没有明确定义的消息。
 -优点：易于扩展
 -缺点：参数传递较多，不宜控制
 
 - Forwardable
+
 ```
 require 'forwardable'
 class User
@@ -120,6 +128,7 @@ product = Product.new
 product.price = 10
 User.new(product).price
 ```
+
 `def_delegators` 指明了把 User要调用的方法（name, description,price）绑定到`@product`上，调用`@user.price` 就相当于调用了`@product.price`.
 关于	`forwardable`的用法可以参考[这里](http://brainspec.com/blog/2012/11/07/delegation-with-forwardable/)
 
